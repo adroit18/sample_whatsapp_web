@@ -1,0 +1,10 @@
+.userCard{
+    padding: 1rem;
+    background-color: floralwhite;
+    border: 1px solid;
+    margin: 1rem 0rem;
+
+    &:hover{
+        box-shadow: 0.5rem 0.5rem 0.5rem lightgrey;
+    }
+}

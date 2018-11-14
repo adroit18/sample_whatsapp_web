@@ -1,0 +1,3 @@
+export const CHANGE_SELECTED_USER = 'CHANGE_SELECTED_USER'
+export const FETCH_CHATS = 'FETCH_CHATS'
+

@@ -1,10 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './index.scss';
-import { Row} from 'react-bootstrap';
 
-const Header = () => (
+const Header = (props) => (
   <div>
-    <Row>Welcome</Row>
+    Welcome {props.loginUser}
   </div>
 );
-export default Header;
+const mapStateToProps = state => {
+  return {
+    loginUser: state.loginReducer.loginUser,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(Header);
+

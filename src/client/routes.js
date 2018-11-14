@@ -6,7 +6,7 @@ import Home from './Routes/Home/index.js';
 const Main = () => (
   <main>
     <Switch>
-      <Route exact path='/' component={Home}/>
+      <Route exact path='/' component={Login}/>
       <Route path='/home' component={Home}/>
     </Switch>
   </main>

@@ -1,12 +1,53 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './index.scss';
 import List from './components/List';
 import ChatArea from './components/ChatArea';
 
-const Header = () => (
+import { userSelectedtoChat,fetchCurrentChatsBetween } from './store/actions';
+
+const Home = (props) => (
   <div className = "mainContainer">
-    <div className = "friendList"><List></List></div>
-    <div className = "chatArea"><ChatArea></ChatArea></div>
+    <div className = "friendList">
+      <List 
+      data={localStorage.getItem('users')}
+      loginUser = {props.loginUser}
+      onChangeSelectedUser = {props.onChangeSelectedUser}
+      />
+    </div>
+    {props.selectedUser?
+    <div className = "chatArea">
+      <ChatArea 
+        loginUser = {props.loginUser}
+        selectedUser = {props.selectedUser}
+        currentChats = {props.currentChats}
+        fetchChats = {props.fetchChats}
+        onChangeSelectedUser = {props.onChangeSelectedUser}
+      />
+    </div>:<h2>Choose a contact</h2>}
   </div>
 );
-export default Header;
+
+const mapStateToProps = state => {
+  return {
+    loginUser: state.loginReducer.loginUser,
+    selectedUser: state.homeReducer.selectedUser,
+    currentChats: state.homeReducer.currentChats
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchChats: (loginUser,selectedUser) => {
+      dispatch(fetchCurrentChatsBetween(loginUser,selectedUser));
+    },
+    onChangeSelectedUser: (loginUser,userName) => {
+      dispatch(fetchCurrentChatsBetween(loginUser,userName))
+      dispatch(userSelectedtoChat(userName));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

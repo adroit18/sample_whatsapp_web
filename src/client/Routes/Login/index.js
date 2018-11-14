@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from './utils/index.ts';
 import './index.scss';
+import {setLoginUser} from './store/actions';
 
 class Login extends Component {
 
@@ -63,13 +65,16 @@ class Login extends Component {
         if(formState === true){
             var userList = JSON.parse(localStorage.getItem('users'));
             let validUser = false;
+            let user = null;
             for(var val of userList) {
-                if(val.username == this.state.formData.email && val.password == this.state.formData.password){
+                if(val.email == this.state.formData.email && val.password == this.state.formData.password){
                     validUser =  true;
+                    user = val;
                     break;
                 }
             }
             if(validUser){
+                this.props.setUser(user);
                 this.props.history.push('/home')
             }
         } else {
@@ -110,4 +115,17 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const mapDispatchToProps = dispatch => {
+    return {
+      setUser: (loginUser) => {
+        dispatch(setLoginUser(loginUser));
+      }
+    };
+};
+  
+export default connect(
+    null,
+    mapDispatchToProps
+)(Login);
+  
+  
