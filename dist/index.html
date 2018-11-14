@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>React learn</title>
+</head>
+<body>
+    <div id="root"></div>
+<script type="text/javascript" src="index_bundle.js"></script></body>
+<script type="text/javascript">
+    var userList=[
+        {
+            username:'deepak@gmail.com',
+            password:'test@123'
+        },
+        {
+            username:'deepak@yahoo.com',
+            password:'test@123'
+        },
+    ];
+    localStorage.setItem('users', JSON.stringify(userList));
+</script>
+</html>

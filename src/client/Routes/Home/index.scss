@@ -1,0 +1,17 @@
+.mainContainer{
+    width:100%;
+    display: flex;
+    padding:1rem;
+
+    .friendList {
+        width: 30%;
+        padding:1rem;
+        
+    }
+
+    .chatArea {
+        width: 70%;
+        padding:1rem;
+    }
+
+}
