@@ -1,32 +1,38 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import './index.scss';
 import List from './components/List';
 import ChatArea from './components/ChatArea';
 
 import { userSelectedtoChat,fetchCurrentChatsBetween } from './store/actions';
 
-const Home = (props) => (
-  <div className = "mainContainer">
-    <div className = "friendList">
-      <List 
-      data={localStorage.getItem('users')}
-      loginUser = {props.loginUser}
-      onChangeSelectedUser = {props.onChangeSelectedUser}
-      />
-    </div>
-    {props.selectedUser?
-    <div className = "chatArea">
-      <ChatArea 
+const Home = (props) => {
+  if(!props.loginUser)
+    return <Redirect to="/" />
+
+  return(
+    <div className = "mainContainer">
+      <div className = "friendList">
+        <List 
+        data={localStorage.getItem('users')}
         loginUser = {props.loginUser}
-        selectedUser = {props.selectedUser}
-        currentChats = {props.currentChats}
-        fetchChats = {props.fetchChats}
         onChangeSelectedUser = {props.onChangeSelectedUser}
-      />
-    </div>:<h2>Choose a contact</h2>}
-  </div>
-);
+        />
+      </div>
+      {props.selectedUser?
+      <div className = "chatArea">
+        <ChatArea 
+          loginUser = {props.loginUser}
+          selectedUser = {props.selectedUser}
+          currentChats = {props.currentChats}
+          fetchChats = {props.fetchChats}
+          onChangeSelectedUser = {props.onChangeSelectedUser}
+        />
+      </div>:<h2>Choose a contact</h2>}
+    </div>
+  )
+};
 
 const mapStateToProps = state => {
   return {
