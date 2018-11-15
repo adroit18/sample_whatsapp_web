@@ -6,7 +6,17 @@ const Chats = (props) => {
     if(data && data.length>0){
       let list = [];
       for (let i = 0; i < data.length; i++) {
-        list.push(<div key={i}>{data[i]}</div>)
+        list.push(
+          <div key={i} className={(props.loginUser ==  data[i].user ? 'right' : 'left')}>
+            <span>
+              {data[i].user}
+            </span>
+            <span>&nbsp;::&nbsp;</span>
+            <span>
+              {data[i].message}
+            </span>
+          </div>
+        )
       }
       return list;
     }

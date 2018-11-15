@@ -29,7 +29,7 @@ class ChartArea extends Component {
   } 
   sendMessage = (msg)=>{
     if(this.state.message){
-      socket.emit('messageSend', this.state.message)
+      socket.emit('messageSend', {"user":this.props.loginUser,"message":this.state.message})
       this.setState({
         message : ''
       });
@@ -39,7 +39,7 @@ class ChartArea extends Component {
     return(
       <div>
           <h2>Chart Here.</h2>
-          <Chats data={this.props.currentChats} ></Chats>
+          <Chats data={this.props.currentChats} loginUser={this.props.loginUser}></Chats>
           <input className="chatInput" type="text" name="message" value={this.state.message}  onChange={this.handleInputChange}/>
           <button className="chatSend" onClick={this.sendMessage}>Send</button>
       </div>

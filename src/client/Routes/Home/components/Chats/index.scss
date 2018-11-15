@@ -1,3 +1,19 @@
 .chatDisplay{
-    min-height: 14rem;
+    min-height: 20rem;
+    max-height: 20rem;
+    overflow: scroll;
+}
+.right{
+    display: flex;
+    background-color: lightgreen;
+    flex-direction: row-reverse;
+    border:1px solid lightgray;
+    padding: 1rem; 
+}
+.left{
+    display: flex;
+    background-color: white;
+    flex-direction: row; 
+    border:1px solid lightgray;
+    padding: 1rem; 
 }
