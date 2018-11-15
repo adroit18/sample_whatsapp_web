@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './index.scss';
 
 const Header = (props) => (
-  <div>
+  <div className="header">
     Welcome {props.loginUser}
   </div>
 );

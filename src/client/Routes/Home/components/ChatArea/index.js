@@ -40,8 +40,8 @@ class ChartArea extends Component {
       <div>
           <h2>Chart Here.</h2>
           <Chats data={this.props.currentChats} ></Chats>
-          <input type="text" name="message" value={this.state.message}  onChange={this.handleInputChange}/>
-          <button onClick={this.sendMessage}>Send</button>
+          <input className="chatInput" type="text" name="message" value={this.state.message}  onChange={this.handleInputChange}/>
+          <button className="chatSend" onClick={this.sendMessage}>Send</button>
       </div>
     );
   }

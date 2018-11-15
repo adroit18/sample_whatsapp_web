@@ -12,7 +12,7 @@ const Chats = (props) => {
     }
   }
   return (
-    <div>
+    <div className="chatDisplay">
       {showChats(props.data)}
     </div>
     );

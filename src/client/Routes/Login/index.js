@@ -34,7 +34,7 @@ class Login extends Component {
         
         let errors = {};
         const { formData } = this.state;
-
+        console.log(this.state);
         if (isEmpty(formData.email)) {
             errors.email = "Email can't be blank";
         } else if (!isEmail(formData.email)) {
@@ -60,9 +60,9 @@ class Login extends Component {
         
         e.preventDefault();
 
-        let formState = this.validateLoginForm();
+        let errorNotOccured = this.validateLoginForm();
 
-        if(formState === true){
+        if(errorNotOccured === true){
             var userList = JSON.parse(localStorage.getItem('users'));
             let validUser = false;
             let user = null;
@@ -79,7 +79,7 @@ class Login extends Component {
             }
         } else {
             this.setState({
-                errors: errors,
+                errors: errorNotOccured,
                 formSubmitted: true
             });
         }
@@ -90,27 +90,45 @@ class Login extends Component {
         const { errors, formSubmitted } = this.state;
 
         return (
-            <div className="Login">
-                <div>
-                    <form onSubmit={this.login}>
-                        <div type="email" >
-                            <div>Email</div>
-                            <input type="text" name="email" placeholder="Enter your email" onChange={this.handleInputChange} />
-                        { errors.email && 
-                            <div>{errors.email}</div> 
-                        }
-                        </div >
-                        <div type="password" >
-                            <div>Password</div>
-                            <input type="password" name="password" placeholder="Enter your password" onChange={this.handleInputChange} />
-                        { errors.password && 
-                            <div>{errors.password}</div> 
-                        }
-                        </div>
-                        <button type="submit" >Sign-In</button>
-                    </form>
+            <React.Fragment>
+            <form id="login" onSubmit={this.login}>
+                <h1>Log In</h1>
+                <div id="inputs">
+                    <input id="username" name="email" type="text" placeholder="Username" autoFocus  onChange={this.handleInputChange} />
+                    { errors.email && 
+                        <div>{errors.email}</div> 
+                    }   
+                    <input id="password"  name="password" type="password" placeholder="Password"  onChange={this.handleInputChange} />
+                    { errors.password && 
+                        <div>{errors.password}</div> 
+                    }   
                 </div>
-            </div>
+                <div id="actions">
+                    <input type="submit" id="submit" value="Log in" />
+                </div>
+            </form>
+        </React.Fragment>
+
+            //  <React.Fragment>
+            //     <form onSubmit={this.login} id="login">
+                
+            //         <div type="email" >
+            //             <div>Email</div>
+            //             <input type="text" name="email" placeholder="Enter your email" onChange={this.handleInputChange} />
+            //         { errors.email && 
+            //             <div>{errors.email}</div> 
+            //         }
+            //         </div >
+            //         <div type="password" >
+            //             <div>Password</div>
+            //             <input type="password" name="password" placeholder="Enter your password" onChange={this.handleInputChange} />
+            //         { errors.password && 
+            //             <div>{errors.password}</div> 
+            //         }
+            //         </div>
+            //         <button type="submit" >Sign-In</button>
+            //     </form>
+            // </React.Fragment> 
         )
     }
 }
