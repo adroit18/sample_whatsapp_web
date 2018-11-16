@@ -34,7 +34,6 @@ class Login extends Component {
         
         let errors = {};
         const { formData } = this.state;
-        console.log(this.state);
         if (isEmpty(formData.email)) {
             errors.email = "Email can't be blank";
         } else if (!isEmail(formData.email)) {
