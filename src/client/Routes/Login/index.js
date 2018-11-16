@@ -107,27 +107,6 @@ class Login extends Component {
                 </div>
             </form>
         </React.Fragment>
-
-            //  <React.Fragment>
-            //     <form onSubmit={this.login} id="login">
-                
-            //         <div type="email" >
-            //             <div>Email</div>
-            //             <input type="text" name="email" placeholder="Enter your email" onChange={this.handleInputChange} />
-            //         { errors.email && 
-            //             <div>{errors.email}</div> 
-            //         }
-            //         </div >
-            //         <div type="password" >
-            //             <div>Password</div>
-            //             <input type="password" name="password" placeholder="Enter your password" onChange={this.handleInputChange} />
-            //         { errors.password && 
-            //             <div>{errors.password}</div> 
-            //         }
-            //         </div>
-            //         <button type="submit" >Sign-In</button>
-            //     </form>
-            // </React.Fragment> 
         )
     }
 }
