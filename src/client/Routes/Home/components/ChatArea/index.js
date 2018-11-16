@@ -18,8 +18,6 @@ class ChartArea extends Component {
         currentChat[data.to][data.from].push(data);
         localStorage.setItem('chatData', JSON.stringify(currentChat));
         this.props.fetchChats(this.props.loginUser,this.props.selectedUser);
-        var objDiv = document.getElementById("divExample");
-        objDiv.scrollTop = objDiv.scrollHeight;
       });
   }
   handleInputChange = (event) => {
