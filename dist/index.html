@@ -9,18 +9,18 @@
 <script type="text/javascript">
     var userList=[
         {       
-            username:'Deepak Uniyal',
-            email:'deepak@gmail.com',
+            username:'User 1',
+            email:'user1@gmail.com',
             password:'test@123'
         },
         {
-            username:'Deepak',
-            email:'deepak@yahoo.com',
+            username:'User 2',
+            email:'user2@yahoo.com',
             password:'test@123'
         },
         {
-            username:'Uniyal',
-            email:'deepak@rediff.com',
+            username:'User 3',
+            email:'user3@rediff.com',
             password:'test@123'
         },
 
@@ -28,17 +28,17 @@
     localStorage.setItem('users', JSON.stringify(userList));
     if(!localStorage.getItem('chatData')){
         var chatData={
-            'deepak@gmail.com':{
-                'deepak@yahoo.com':[],
-                'deepak@rediff.com':[]
+            'user1@gmail.com':{
+                'user2@yahoo.com':[],
+                'user3@rediff.com':[]
             },
-            'deepak@yahoo.com':{
-                'deepak@gmail.com':[],
-                'deepak@rediff.com':[]
+            'user2@yahoo.com':{
+                'user1@gmail.com':[],
+                'user3@rediff.com':[]
             },
-            'deepak@rediff.com':{
-                'deepak@gmail.com':[],
-                'deepak@yahoo.com':[]
+            'user3@rediff.com':{
+                'user1@gmail.com':[],
+                'user2@yahoo.com':[]
             }
         }
         localStorage.setItem('chatData', JSON.stringify(chatData));
