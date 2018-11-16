@@ -26,20 +26,22 @@
 
     ];
     localStorage.setItem('users', JSON.stringify(userList));
-    var chatData={
-        'deepak@gmail.com':{
-            'deepak@yahoo.com':[],
-            'deepak@rediff.com':[]
-        },
-        'deepak@yahoo.com':{
-            'deepak@gmail.com':[],
-            'deepak@rediff.com':[]
-        },
-        'deepak@rediff.com':{
-            'deepak@gmail.com':[],
-            'deepak@yahoo.com':[]
+    if(!localStorage.getItem('chatData')){
+        var chatData={
+            'deepak@gmail.com':{
+                'deepak@yahoo.com':[],
+                'deepak@rediff.com':[]
+            },
+            'deepak@yahoo.com':{
+                'deepak@gmail.com':[],
+                'deepak@rediff.com':[]
+            },
+            'deepak@rediff.com':{
+                'deepak@gmail.com':[],
+                'deepak@yahoo.com':[]
+            }
         }
+        localStorage.setItem('chatData', JSON.stringify(chatData));
     }
-    localStorage.setItem('chatData', JSON.stringify(chatData));
 </script>
 </html>

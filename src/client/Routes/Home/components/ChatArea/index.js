@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import socketIOClient from 'socket.io-client'
 import './index.scss';
 import Chats from './../Chats/index';
-import { fetchCurrentChatsBetween } from './../../store/actions';
 
 const socket = socketIOClient('http://localhost:8080');
 
@@ -15,10 +14,12 @@ class ChartArea extends Component {
       }
       socket.on('newMessage',(data)=>{
         let currentChat = JSON.parse(localStorage.getItem('chatData'));
-        currentChat[this.props.loginUser][this.props.selectedUser].push(data);
-        currentChat[this.props.selectedUser][this.props.loginUser].push(data);
+        currentChat[data.from][data.to].push(data);
+        currentChat[data.to][data.from].push(data);
         localStorage.setItem('chatData', JSON.stringify(currentChat));
         this.props.fetchChats(this.props.loginUser,this.props.selectedUser);
+        var objDiv = document.getElementById("divExample");
+        objDiv.scrollTop = objDiv.scrollHeight;
       });
   }
   handleInputChange = (event) => {
@@ -29,7 +30,12 @@ class ChartArea extends Component {
   } 
   sendMessage = (msg)=>{
     if(this.state.message){
-      socket.emit('messageSend', {"user":this.props.loginUser,"message":this.state.message})
+      socket.emit('messageSend', {
+          "from":this.props.loginUser,
+          "to":this.props.selectedUser,
+          "message":this.state.message
+        }
+      )
       this.setState({
         message : ''
       });

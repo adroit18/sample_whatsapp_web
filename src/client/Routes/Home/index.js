@@ -29,7 +29,7 @@ const Home = (props) => {
           fetchChats = {props.fetchChats}
           onChangeSelectedUser = {props.onChangeSelectedUser}
         />
-      </div>:<h2>Choose a contact</h2>}
+      </div>:<h2 className="chooseContact">Choose a contact</h2>}
     </div>
   )
 };

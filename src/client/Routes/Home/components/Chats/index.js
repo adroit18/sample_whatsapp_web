@@ -7,11 +7,7 @@ const Chats = (props) => {
       let list = [];
       for (let i = 0; i < data.length; i++) {
         list.push(
-          <div key={i} className={(props.loginUser ==  data[i].user ? 'right' : 'left')}>
-            <span>
-              {data[i].user}
-            </span>
-            <span>&nbsp;::&nbsp;</span>
+          <div key={i} className={(props.loginUser ==  data[i].from ? 'right' : 'left')}>
             <span>
               {data[i].message}
             </span>
@@ -22,9 +18,11 @@ const Chats = (props) => {
     }
   }
   return (
-    <div className="chatDisplay">
-      {showChats(props.data)}
-    </div>
+    <React.Fragment>
+      <div className="chatDisplay">
+        {showChats(props.data)}
+      </div>
+    </React.Fragment>
     );
   };
 export default Chats;
